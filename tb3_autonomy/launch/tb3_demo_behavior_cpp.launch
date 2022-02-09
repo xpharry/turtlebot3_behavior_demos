@@ -2,9 +2,10 @@
 
 <!-- Define parameters -->
 <arg name="target_color" default="blue"/>
-<arg name="behavior_tree_type" default="queue"/>
+<arg name="behavior_tree_type" default="naive"/>
 <param name="target_color" value="$(arg target_color)"/>
 <param name="behavior_tree_type" value="$(arg behavior_tree_type)"/>
+<param name="location_file" value="$(find tb3_worlds)/maps/sim_house_locations.yaml"/>
 
 <!-- Run autonomy stack -->
 <node pkg="tb3_autonomy" type="autonomy_node" name="autonomy_node" output="screen"/>

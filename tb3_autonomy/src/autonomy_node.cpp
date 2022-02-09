@@ -1,4 +1,4 @@
-// Main behavior node for TurtleBot3 
+// Main behavior node for TurtleBot3
 
 #include "ros/ros.h"
 #include "yaml-cpp/yaml.h"
@@ -36,20 +36,20 @@ static const char* xml_text_naive = R"(
  </root>
  )";
 
-// A better implementation which uses a queue of location names to iterate through 
+// A better implementation which uses a queue of location names to iterate through
 // visiting locations regardless of number of locations.
 static const char* xml_text_queue = R"(
 <root main_tree_to_execute = "MainTree" >
     <BehaviorTree ID="MainTree">
     <Sequence name="main_loop">
         <SetLocations              name="set_locations" num_locs="{num_locs}"/>
-        <RetryUntilSuccesful       num_attempts="{num_locs}">
+        <RetryUntilSuccessful       num_attempts="{num_locs}">
             <Sequence   name="search_location">
-                <GetLocationFromQueue   name="get_loc"      target_location="{target_location}"/>   
+                <GetLocationFromQueue   name="get_loc"      target_location="{target_location}"/>
                 <GoToPose               name="go_to_loc"    loc="{target_location}"/>
                 <LookForObject          name="look_for_obj" />
-            </Sequence>   
-        </RetryUntilSuccesful>
+            </Sequence>
+        </RetryUntilSuccessful>
     </Sequence>
     </BehaviorTree>
 </root>
